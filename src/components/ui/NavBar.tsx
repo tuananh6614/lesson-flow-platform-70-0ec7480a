@@ -10,8 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { BookOpen, LogOut, Menu, User, X } from "lucide-react";
-import { LayoutDashboard } from "@/components/ui/layout-dashboard";
+import { BookOpen, LogOut, Menu, User, X, LayoutDashboard } from "lucide-react";
 
 export default function NavBar() {
   const { user, logout } = useAuth();
