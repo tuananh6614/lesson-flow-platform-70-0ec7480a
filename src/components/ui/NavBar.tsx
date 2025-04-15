@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { BookOpen, LogOut, Menu, User, X } from "lucide-react";
+import { LayoutDashboard } from "@/components/ui/layout-dashboard";
 
 export default function NavBar() {
   const { user, logout } = useAuth();
@@ -100,22 +101,30 @@ export default function NavBar() {
                   <DropdownMenuItem asChild>
                     <Link to="/profile" className="cursor-pointer">
                       <User className="mr-2 h-4 w-4" />
-                      <span>Profile</span>
+                      <span>Hồ sơ</span>
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <Link to="/dashboard" className="cursor-pointer">
                       <BookOpen className="mr-2 h-4 w-4" />
-                      <span>My Courses</span>
+                      <span>Khóa học của tôi</span>
                     </Link>
                   </DropdownMenuItem>
+                  {user.role === 'admin' && (
+                    <DropdownMenuItem asChild>
+                      <Link to="/admin" className="cursor-pointer">
+                        <LayoutDashboard className="mr-2 h-4 w-4" />
+                        <span>Quản trị</span>
+                      </Link>
+                    </DropdownMenuItem>
+                  )}
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
                     onClick={handleLogout}
                     className="cursor-pointer text-red-600 focus:text-red-500"
                   >
                     <LogOut className="mr-2 h-4 w-4" />
-                    <span>Logout</span>
+                    <span>Đăng xuất</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
