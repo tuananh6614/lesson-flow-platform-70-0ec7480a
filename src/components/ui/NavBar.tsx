@@ -41,7 +41,7 @@ export default function NavBar() {
               <Link to="/" className="flex items-center space-x-2">
                 <BookOpen className="h-8 w-8 text-lesson-primary" />
                 <span className="text-2xl font-bold text-lesson-primary">
-                  LessonFlow
+                  EPUlearn
                 </span>
               </Link>
             </div>
