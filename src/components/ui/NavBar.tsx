@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -51,20 +50,26 @@ export default function NavBar() {
                 to="/"
                 className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
               >
-                Home
+                Trang chủ
               </Link>
               <Link
                 to="/courses"
                 className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
               >
-                Courses
+                Khóa học
+              </Link>
+              <Link
+                to="/about"
+                className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+              >
+                Giới thiệu
               </Link>
               {user && (
                 <Link
                   to="/dashboard"
                   className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
                 >
-                  My Dashboard
+                  Bảng điều khiển
                 </Link>
               )}
             </div>
@@ -117,10 +122,10 @@ export default function NavBar() {
             ) : (
               <div className="flex items-center space-x-2">
                 <Link to="/login">
-                  <Button variant="outline">Login</Button>
+                  <Button variant="outline">Đăng nhập</Button>
                 </Link>
                 <Link to="/register">
-                  <Button>Register</Button>
+                  <Button>Đăng ký</Button>
                 </Link>
               </div>
             )}
@@ -140,7 +145,6 @@ export default function NavBar() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       <div className={`${isOpen ? "block" : "hidden"} sm:hidden`}>
         <div className="pt-2 pb-3 space-y-1">
           <Link
@@ -148,14 +152,21 @@ export default function NavBar() {
             className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800"
             onClick={() => setIsOpen(false)}
           >
-            Home
+            Trang chủ
           </Link>
           <Link
             to="/courses"
             className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800"
             onClick={() => setIsOpen(false)}
           >
-            Courses
+            Khóa học
+          </Link>
+          <Link
+            to="/about"
+            className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800"
+            onClick={() => setIsOpen(false)}
+          >
+            Giới thiệu
           </Link>
           {user && (
             <Link
@@ -163,7 +174,7 @@ export default function NavBar() {
               className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800"
               onClick={() => setIsOpen(false)}
             >
-              My Dashboard
+              Bảng điều khiển
             </Link>
           )}
         </div>
@@ -217,14 +228,14 @@ export default function NavBar() {
                 className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
                 onClick={() => setIsOpen(false)}
               >
-                Login
+                Đăng nhập
               </Link>
               <Link
                 to="/register"
                 className="block px-4 py-2 text-base font-medium text-indigo-600 hover:text-indigo-800 hover:bg-gray-100"
                 onClick={() => setIsOpen(false)}
               >
-                Register
+                Đăng ký
               </Link>
             </div>
           </div>
