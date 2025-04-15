@@ -96,91 +96,62 @@
 }
 
 /* Animation classes */
-.fade-in {
-  animation: fadeIn 0.5s ease-in;
-}
-
-.slide-in {
-  animation: slideIn 0.5s ease-out;
-}
-
-.scale-in {
-  animation: scaleIn 0.3s ease-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+@layer components {
+  .fade-in {
+    @apply animate-fade-in;
   }
-  to {
-    opacity: 1;
+
+  .slide-in {
+    @apply animate-slide-in;
   }
-}
 
-@keyframes slideIn {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
+  .scale-in {
+    @apply animate-scale-in;
   }
-  to {
-    transform: translateY(0);
-    opacity: 1;
+
+  .course-card {
+    @apply transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl;
   }
-}
 
-@keyframes scaleIn {
-  from {
-    transform: scale(0.95);
-    opacity: 0;
+  .course-card:hover {
+    transform: translateY(-5px);
   }
-  to {
-    transform: scale(1);
-    opacity: 1;
+
+  .progress-bar {
+    @apply h-2 bg-secondary rounded-full overflow-hidden;
   }
-}
 
-.course-card {
-  @apply transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl;
-}
+  .progress-bar-inner {
+    @apply h-full bg-primary transition-all duration-300;
+  }
 
-.course-card:hover {
-  transform: translateY(-5px);
-}
+  .lesson-content {
+    @apply text-base leading-relaxed animate-fade-in;
+  }
 
-.progress-bar {
-  @apply h-2 bg-secondary rounded-full overflow-hidden;
-}
+  .lesson-content h1 {
+    @apply text-2xl font-bold mb-4;
+  }
 
-.progress-bar-inner {
-  @apply h-full bg-primary transition-all duration-300;
-}
+  .lesson-content h2 {
+    @apply text-xl font-bold mb-3;
+  }
 
-.lesson-content {
-  @apply text-base leading-relaxed animate-fade-in;
-}
+  .lesson-content p {
+    @apply mb-4;
+  }
 
-.lesson-content h1 {
-  @apply text-2xl font-bold mb-4;
-}
+  .lesson-content ul, .lesson-content ol {
+    @apply pl-6 mb-4;
+  }
 
-.lesson-content h2 {
-  @apply text-xl font-bold mb-3;
-}
+  .lesson-content ul {
+    @apply list-disc;
+  }
 
-.lesson-content p {
-  @apply mb-4;
-}
-
-.lesson-content ul, .lesson-content ol {
-  @apply pl-6 mb-4;
-}
-
-.lesson-content ul {
-  @apply list-disc;
-}
-
-.lesson-content ol {
-  @apply list-decimal;
+  .lesson-content ol {
+    @apply list-decimal;
+  }
 }
 
 /* Custom animations for page transitions */
