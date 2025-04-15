@@ -28,17 +28,22 @@ const SeasonalBackground = () => {
         className={`fixed inset-0 transition-colors duration-[3000ms] ease-in-out -z-10 ${seasonStyles[currentSeason]}`}
         aria-hidden="true"
       />
-      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+      <div className="fixed top-20 right-4 flex flex-col gap-2 z-10">
         {seasonButtons.map(({ season, icon: Icon, label }) => (
           <Button
             key={season}
             variant={currentSeason === season ? "default" : "outline"}
             size="icon"
             onClick={() => setCurrentSeason(season)}
-            className="w-12 h-12 rounded-full bg-white/80 hover:bg-white/90 transition-all duration-200"
+            className={`w-12 h-12 rounded-full transition-all duration-200 ${
+              currentSeason === season 
+                ? "bg-white shadow-md" 
+                : "bg-white/80 hover:bg-white/90"
+            }`}
             title={label}
+            aria-label={`Change season to ${season}`}
           >
-            <Icon className="h-6 w-6" />
+            <Icon className={`h-6 w-6 ${currentSeason === season ? "text-lesson-primary" : ""}`} />
           </Button>
         ))}
       </div>
@@ -47,4 +52,3 @@ const SeasonalBackground = () => {
 };
 
 export default SeasonalBackground;
-
