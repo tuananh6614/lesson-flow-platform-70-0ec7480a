@@ -95,17 +95,68 @@
   }
 }
 
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.slide-in {
+  animation: slideIn 0.5s ease-out;
+}
+
+.scale-in {
+  animation: scaleIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 .course-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  @apply transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl;
 }
 
 .course-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+  @apply h-2 bg-secondary rounded-full overflow-hidden;
+}
+
+.progress-bar-inner {
+  @apply h-full bg-primary transition-all duration-300;
 }
 
 .lesson-content {
-  @apply text-base leading-relaxed;
+  @apply text-base leading-relaxed animate-fade-in;
 }
 
 .lesson-content h1 {
@@ -132,10 +183,23 @@
   @apply list-decimal;
 }
 
-.progress-bar {
-  @apply h-2 bg-secondary rounded-full overflow-hidden;
+/* Custom animations for page transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
 }
 
-.progress-bar-inner {
-  @apply h-full bg-primary transition-all duration-300;
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
 }

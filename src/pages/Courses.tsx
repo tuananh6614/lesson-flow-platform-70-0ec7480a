@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCourses } from "@/lib/mock-data";
@@ -37,22 +36,22 @@ const CoursesPage = () => {
   return (
     <Layout>
       <div className="bg-lesson-primary text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">All Courses</h1>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 slide-in">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">Tất Cả Khóa Học</h1>
           <p className="text-xl text-purple-100 max-w-3xl">
-            Browse our complete catalog of courses designed to help you master new skills and achieve your learning goals.
+            Khám phá danh mục khóa học đầy đủ được thiết kế để giúp bạn làm chủ kỹ năng mới và đạt được mục tiêu học tập.
           </p>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Search and Filter */}
-        <div className="bg-white p-4 rounded-lg shadow-sm mb-8 flex flex-col md:flex-row gap-4">
+        <div className="bg-white p-4 rounded-lg shadow-sm mb-8 flex flex-col md:flex-row gap-4 fade-in">
           <div className="flex-1 relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
             <Input
               type="text"
-              placeholder="Search courses..."
+              placeholder="Tìm kiếm khóa học..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10"
@@ -64,13 +63,13 @@ const CoursesPage = () => {
               onValueChange={setStatusFilter}
             >
               <SelectTrigger>
-                <SelectValue placeholder="Status" />
+                <SelectValue placeholder="Trạng thái" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">All Statuses</SelectItem>
-                <SelectItem value="active">Active</SelectItem>
-                <SelectItem value="inactive">Inactive</SelectItem>
-                <SelectItem value="maintenance">Maintenance</SelectItem>
+                <SelectItem value="all">Tất Cả Trạng Thái</SelectItem>
+                <SelectItem value="active">Đang Hoạt Động</SelectItem>
+                <SelectItem value="inactive">Không Hoạt Động</SelectItem>
+                <SelectItem value="maintenance">Đang Bảo Trì</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -82,7 +81,7 @@ const CoursesPage = () => {
             variant="outline"
             className="whitespace-nowrap"
           >
-            Clear Filters
+            Xóa Bộ Lọc
           </Button>
         </div>
 
@@ -106,10 +105,10 @@ const CoursesPage = () => {
             ))}
           </div>
         ) : (
-          <div className="text-center py-12">
-            <h3 className="text-xl font-semibold text-gray-700 mb-2">No courses found</h3>
+          <div className="text-center py-12 fade-in">
+            <h3 className="text-xl font-semibold text-gray-700 mb-2">Không tìm thấy khóa học</h3>
             <p className="text-gray-500">
-              Try adjusting your search or filter criteria.
+              Hãy thử điều chỉnh tiêu chí tìm kiếm hoặc bộ lọc của bạn.
             </p>
           </div>
         )}

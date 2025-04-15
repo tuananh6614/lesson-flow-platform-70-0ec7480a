@@ -18,8 +18,8 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-gray-500 text-base">
-              Making education accessible to everyone, everywhere.
-              Transform your learning experience with our interactive platform.
+              Mang giáo dục đến với mọi người, mọi nơi.
+              Nâng cao trải nghiệm học tập của bạn với nền tảng tương tác của chúng tôi.
             </p>
             <div className="flex space-x-6">
               <a href="#" className="text-gray-400 hover:text-gray-500">
@@ -40,49 +40,49 @@ export default function Footer() {
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
                 <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-                  Platform
+                  Nền Tảng
                 </h3>
                 <ul className="mt-4 space-y-4">
                   <li>
                     <Link to="/courses" className="text-base text-gray-500 hover:text-gray-900">
-                      All Courses
+                      Tất Cả Khóa Học
                     </Link>
                   </li>
                   <li>
                     <Link to="/pricing" className="text-base text-gray-500 hover:text-gray-900">
-                      Pricing
+                      Bảng Giá
                     </Link>
                   </li>
                   <li>
                     <Link to="/dashboard" className="text-base text-gray-500 hover:text-gray-900">
-                      Student Dashboard
+                      Bảng Điều Khiển
                     </Link>
                   </li>
                   <li>
                     <Link to="/faq" className="text-base text-gray-500 hover:text-gray-900">
-                      FAQ
+                      Câu Hỏi Thường Gặp
                     </Link>
                   </li>
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
                 <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-                  Support
+                  Hỗ Trợ
                 </h3>
                 <ul className="mt-4 space-y-4">
                   <li>
                     <Link to="/contact" className="text-base text-gray-500 hover:text-gray-900">
-                      Contact Us
+                      Liên Hệ
                     </Link>
                   </li>
                   <li>
                     <Link to="/help" className="text-base text-gray-500 hover:text-gray-900">
-                      Help Center
+                      Trung Tâm Trợ Giúp
                     </Link>
                   </li>
                   <li>
                     <Link to="/community" className="text-base text-gray-500 hover:text-gray-900">
-                      Community
+                      Cộng Đồng
                     </Link>
                   </li>
                 </ul>
@@ -91,12 +91,12 @@ export default function Footer() {
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
                 <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-                  Company
+                  Công Ty
                 </h3>
                 <ul className="mt-4 space-y-4">
                   <li>
                     <Link to="/about" className="text-base text-gray-500 hover:text-gray-900">
-                      About
+                      Về Chúng Tôi
                     </Link>
                   </li>
                   <li>
@@ -106,24 +106,24 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link to="/careers" className="text-base text-gray-500 hover:text-gray-900">
-                      Careers
+                      Tuyển Dụng
                     </Link>
                   </li>
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
                 <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-                  Legal
+                  Pháp Lý
                 </h3>
                 <ul className="mt-4 space-y-4">
                   <li>
                     <Link to="/privacy" className="text-base text-gray-500 hover:text-gray-900">
-                      Privacy
+                      Quyền Riêng Tư
                     </Link>
                   </li>
                   <li>
                     <Link to="/terms" className="text-base text-gray-500 hover:text-gray-900">
-                      Terms
+                      Điều Khoản
                     </Link>
                   </li>
                 </ul>
@@ -133,7 +133,7 @@ export default function Footer() {
         </div>
         <div className="mt-12 border-t border-gray-200 pt-8">
           <p className="text-base text-gray-400 text-center">
-            &copy; {currentYear} LessonFlow. All rights reserved.
+            &copy; {currentYear} LessonFlow. Đã đăng ký bản quyền.
           </p>
         </div>
       </div>
