@@ -19,12 +19,12 @@ import Layout from "@/components/Layout";
 import { BookOpen } from "lucide-react";
 
 const registerSchema = z.object({
-  fullName: z.string().min(2, { message: "Full name must be at least 2 characters" }),
-  email: z.string().email({ message: "Please enter a valid email address" }),
-  password: z.string().min(6, { message: "Password must be at least 6 characters" }),
+  fullName: z.string().min(2, { message: "Họ tên phải có ít nhất 2 ký tự" }),
+  email: z.string().email({ message: "Vui lòng nhập địa chỉ email hợp lệ" }),
+  password: z.string().min(6, { message: "Mật khẩu phải có ít nhất 6 ký tự" }),
   confirmPassword: z.string(),
 }).refine(data => data.password === data.confirmPassword, {
-  message: "Passwords must match",
+  message: "Mật khẩu không khớp",
   path: ["confirmPassword"],
 });
 
@@ -62,15 +62,15 @@ const Register = () => {
             <BookOpen className="h-12 w-12 text-lesson-primary" />
           </div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Create a new account
+            Tạo tài khoản mới
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            Or{" "}
+            Hoặc{" "}
             <Link
               to="/login"
               className="font-medium text-lesson-primary hover:text-indigo-500"
             >
-              sign in to your existing account
+              đăng nhập vào tài khoản hiện có
             </Link>
           </p>
         </div>
@@ -84,11 +84,11 @@ const Register = () => {
                   name="fullName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Full Name</FormLabel>
+                      <FormLabel>Họ và tên</FormLabel>
                       <FormControl>
                         <Input
                           {...field}
-                          placeholder="John Doe"
+                          placeholder="Nguyễn Văn A"
                           autoComplete="name"
                         />
                       </FormControl>
@@ -102,12 +102,12 @@ const Register = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email address</FormLabel>
+                      <FormLabel>Địa chỉ email</FormLabel>
                       <FormControl>
                         <Input
                           {...field}
                           type="email"
-                          placeholder="you@example.com"
+                          placeholder="bạn@example.com"
                           autoComplete="email"
                         />
                       </FormControl>
@@ -121,7 +121,7 @@ const Register = () => {
                   name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Password</FormLabel>
+                      <FormLabel>Mật khẩu</FormLabel>
                       <FormControl>
                         <Input
                           {...field}
@@ -140,7 +140,7 @@ const Register = () => {
                   name="confirmPassword"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Confirm Password</FormLabel>
+                      <FormLabel>Xác nhận mật khẩu</FormLabel>
                       <FormControl>
                         <Input
                           {...field}
@@ -159,26 +159,26 @@ const Register = () => {
                   className="w-full"
                   disabled={form.formState.isSubmitting}
                 >
-                  {form.formState.isSubmitting ? "Creating account..." : "Create account"}
+                  {form.formState.isSubmitting ? "Đang tạo tài khoản..." : "Tạo tài khoản"}
                 </Button>
               </form>
             </Form>
 
             <div className="mt-6">
               <p className="text-center text-sm text-gray-600">
-                By signing up, you agree to our{" "}
+                Bằng cách đăng ký, bạn đồng ý với{" "}
                 <Link
                   to="/terms"
                   className="font-medium text-lesson-primary hover:text-indigo-500"
                 >
-                  Terms of Service
+                  Điều khoản dịch vụ
                 </Link>{" "}
-                and{" "}
+                và{" "}
                 <Link
                   to="/privacy"
                   className="font-medium text-lesson-primary hover:text-indigo-500"
                 >
-                  Privacy Policy
+                  Chính sách bảo mật
                 </Link>
                 .
               </p>

@@ -19,8 +19,8 @@ import Layout from "@/components/Layout";
 import { BookOpen } from "lucide-react";
 
 const loginSchema = z.object({
-  email: z.string().email({ message: "Please enter a valid email address" }),
-  password: z.string().min(6, { message: "Password must be at least 6 characters" }),
+  email: z.string().email({ message: "Vui lòng nhập địa chỉ email hợp lệ" }),
+  password: z.string().min(6, { message: "Mật khẩu phải có ít nhất 6 ký tự" }),
 });
 
 type LoginFormValues = z.infer<typeof loginSchema>;
@@ -55,15 +55,15 @@ const Login = () => {
             <BookOpen className="h-12 w-12 text-lesson-primary" />
           </div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Sign in to your account
+            Đăng nhập vào tài khoản
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            Or{" "}
+            Hoặc{" "}
             <Link
               to="/register"
               className="font-medium text-lesson-primary hover:text-indigo-500"
             >
-              create a new account
+              tạo tài khoản mới
             </Link>
           </p>
         </div>
@@ -77,12 +77,12 @@ const Login = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email address</FormLabel>
+                      <FormLabel>Địa chỉ email</FormLabel>
                       <FormControl>
                         <Input
                           {...field}
                           type="email"
-                          placeholder="you@example.com"
+                          placeholder="bạn@example.com"
                           autoComplete="email"
                         />
                       </FormControl>
@@ -96,7 +96,7 @@ const Login = () => {
                   name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Password</FormLabel>
+                      <FormLabel>Mật khẩu</FormLabel>
                       <FormControl>
                         <Input
                           {...field}
@@ -116,7 +116,7 @@ const Login = () => {
                       to="/forgot-password"
                       className="font-medium text-lesson-primary hover:text-indigo-500"
                     >
-                      Forgot your password?
+                      Quên mật khẩu?
                     </Link>
                   </div>
                 </div>
@@ -126,7 +126,7 @@ const Login = () => {
                   className="w-full"
                   disabled={form.formState.isSubmitting}
                 >
-                  {form.formState.isSubmitting ? "Signing in..." : "Sign in"}
+                  {form.formState.isSubmitting ? "Đang đăng nhập..." : "Đăng nhập"}
                 </Button>
               </form>
             </Form>
@@ -138,7 +138,7 @@ const Login = () => {
                 </div>
                 <div className="relative flex justify-center text-sm">
                   <span className="px-2 bg-white text-gray-500">
-                    Or continue with
+                    Hoặc tiếp tục với
                   </span>
                 </div>
               </div>
@@ -153,7 +153,7 @@ const Login = () => {
                     form.setValue("password", "password");
                   }}
                 >
-                  Demo Account
+                  Tài khoản Demo
                 </Button>
                 <Button
                   variant="outline"
@@ -164,7 +164,7 @@ const Login = () => {
                       .then(() => navigate("/dashboard"))
                   }
                 >
-                  Quick Login
+                  Đăng nhập nhanh
                 </Button>
               </div>
             </div>
