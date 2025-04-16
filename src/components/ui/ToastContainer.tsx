@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { Toast as ToastType } from '../../types';
-import Toast from '@/components/ui/Toast'; // Default import as the component exports default
+import Toast from '@/components/ui/toast'; // Changed to lowercase
 
 interface ToastContainerProps {
   toasts: ToastType[];
