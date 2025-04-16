@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Toast as ToastType } from '../../types';
-import Toast from './Toast';
+import Toast from './toast';
 
 interface ToastContainerProps {
   toasts: ToastType[];
