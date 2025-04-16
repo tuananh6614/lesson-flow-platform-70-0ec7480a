@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { Toast as ToastType } from '../../types';
-import Toast from '@/components/ui/toast'; // Changed to lowercase
+import { Toast } from '@/components/ui/custom-toast'; // Import from the renamed file
 
 interface ToastContainerProps {
   toasts: ToastType[];
