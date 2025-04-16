@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -38,11 +39,12 @@ const Login = () => {
 
   const onSubmit = async (data: LoginFormValues) => {
     try {
+      // Xử lý đăng nhập sẽ được cài đặt với backend thực tế
       await login(data.email, data.password);
       navigate("/dashboard");
     } catch (error) {
       console.error("Login error:", error);
-      // Error is handled in the auth context
+      // Xử lý lỗi
     }
   };
 

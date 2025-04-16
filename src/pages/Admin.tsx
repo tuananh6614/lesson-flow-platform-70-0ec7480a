@@ -4,7 +4,6 @@ import Layout from "@/components/Layout";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -29,10 +28,9 @@ export default function Admin() {
               <Users className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">100</div>
-              <p className="text-xs text-muted-foreground">
-                +20% so với tháng trước
-              </p>
+              <div className="text-2xl font-bold">
+                {/* Số người dùng sẽ được lấy từ cơ sở dữ liệu */}
+              </div>
             </CardContent>
           </Card>
 
@@ -44,10 +42,9 @@ export default function Admin() {
               <BookOpen className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">25</div>
-              <p className="text-xs text-muted-foreground">
-                +5 khóa học mới
-              </p>
+              <div className="text-2xl font-bold">
+                {/* Số khóa học sẽ được lấy từ cơ sở dữ liệu */}
+              </div>
             </CardContent>
           </Card>
 
@@ -59,10 +56,9 @@ export default function Admin() {
               <FileText className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">150</div>
-              <p className="text-xs text-muted-foreground">
-                +15 bài học mới
-              </p>
+              <div className="text-2xl font-bold">
+                {/* Số bài học sẽ được lấy từ cơ sở dữ liệu */}
+              </div>
             </CardContent>
           </Card>
 
@@ -74,10 +70,9 @@ export default function Admin() {
               <LayoutDashboard className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">75%</div>
-              <p className="text-xs text-muted-foreground">
-                +5% so với tháng trước
-              </p>
+              <div className="text-2xl font-bold">
+                {/* Tỷ lệ hoàn thành sẽ được lấy từ cơ sở dữ liệu */}
+              </div>
             </CardContent>
           </Card>
         </div>

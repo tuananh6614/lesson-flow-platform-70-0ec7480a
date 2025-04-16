@@ -1,6 +1,6 @@
+
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { fetchCourses } from "@/lib/mock-data";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
@@ -8,12 +8,7 @@ import CourseCard from "@/components/CourseCard";
 import { BookOpen, BookOpenCheck, GraduationCap } from "lucide-react";
 
 const Index = () => {
-  const { data: courses, isLoading } = useQuery({
-    queryKey: ["featured-courses"],
-    queryFn: fetchCourses
-  });
-
-  const featuredCourses = courses?.slice(0, 3) || [];
+  // Truy vấn dữ liệu khóa học nổi bật từ backend sẽ được thực hiện ở đây
 
   return (
     <Layout>
@@ -53,7 +48,7 @@ const Index = () => {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 fade-in">
-            <h2 className="text-3xl font-bold text-gray-900">Tại Sao Chọn LessonFlow?</h2>
+            <h2 className="text-3xl font-bold text-gray-900">Tại Sao Chọn EPUlearn?</h2>
             <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
               Nền tảng của chúng tôi cung cấp trải nghiệm học tập toàn diện được thiết kế để giúp bạn thành công.
             </p>
@@ -103,25 +98,7 @@ const Index = () => {
             </p>
           </div>
 
-          {isLoading ? (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="bg-white p-6 rounded-lg border border-gray-100 shadow-sm h-96 animate-pulse">
-                  <div className="h-48 bg-gray-200 rounded mb-4"></div>
-                  <div className="h-6 bg-gray-200 rounded w-3/4 mb-2"></div>
-                  <div className="h-4 bg-gray-200 rounded mb-2"></div>
-                  <div className="h-4 bg-gray-200 rounded mb-2"></div>
-                  <div className="h-4 bg-gray-200 rounded w-1/2"></div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {featuredCourses.map((course) => (
-                <CourseCard key={course.id} course={course} />
-              ))}
-            </div>
-          )}
+          {/* Danh sách khóa học nổi bật sẽ được hiển thị ở đây từ dữ liệu backend */}
 
           <div className="mt-12 text-center">
             <Link to="/courses">
@@ -136,7 +113,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
           <h2 className="text-3xl font-bold mb-4">Sẵn Sàng Bắt Đầu Học?</h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
-            Tham gia cùng hàng nghìn học viên đang nâng cao kỹ năng của họ với LessonFlow.
+            Tham gia cùng hàng nghìn học viên đang nâng cao kỹ năng của họ với EPUlearn.
           </p>
           <Link to="/register">
             <Button size="lg" className="bg-white text-lesson-primary hover:bg-purple-100 scale-in">

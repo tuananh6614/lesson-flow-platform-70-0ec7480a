@@ -37,11 +37,11 @@ export default function CourseCard({ course }: CourseCardProps) {
         <CardFooter className="p-4 pt-0 flex justify-between items-center border-t mt-2">
           <div className="flex items-center text-gray-500 text-sm">
             <BookOpen className="h-4 w-4 mr-1" />
-            <span>{course.lessonsCount} lessons</span>
+            <span>{course.lessonsCount} bài học</span>
           </div>
           <div className="flex items-center text-gray-500 text-sm">
             <Users className="h-4 w-4 mr-1" />
-            <span>{course.enrollmentCount} students</span>
+            <span>{course.enrollmentCount} học viên</span>
           </div>
         </CardFooter>
       </Card>

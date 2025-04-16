@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
@@ -33,9 +32,9 @@ const Dashboard = () => {
     return (
       <Layout>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
-          <h2 className="text-2xl font-bold mb-4">Please login to view your dashboard</h2>
+          <h2 className="text-2xl font-bold mb-4">Vui lòng đăng nhập để xem bảng điều khiển</h2>
           <Link to="/login">
-            <Button>Login</Button>
+            <Button>Đăng nhập</Button>
           </Link>
         </div>
       </Layout>
@@ -46,8 +45,8 @@ const Dashboard = () => {
     <Layout>
       <div className="bg-lesson-primary text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold mb-2">Welcome back, {user.full_name}</h1>
-          <p className="text-xl text-purple-100">Track your progress and continue learning</p>
+          <h1 className="text-3xl font-bold mb-2">Xin chào, {user.full_name}</h1>
+          <p className="text-xl text-purple-100">Theo dõi tiến độ học tập của bạn</p>
         </div>
       </div>
 
@@ -55,7 +54,7 @@ const Dashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           <Card>
             <CardHeader className="pb-2">
-              <h3 className="text-lg font-medium">Overall Progress</h3>
+              <h3 className="text-lg font-medium">Tiến độ tổng thể</h3>
             </CardHeader>
             <CardContent>
               <div className="flex flex-col items-center">
@@ -98,7 +97,7 @@ const Dashboard = () => {
 
           <Card>
             <CardHeader className="pb-2">
-              <h3 className="text-lg font-medium">Your Courses</h3>
+              <h3 className="text-lg font-medium">Khóa học của bạn</h3>
             </CardHeader>
             <CardContent>
               <div className="text-center">
@@ -125,7 +124,7 @@ const Dashboard = () => {
             <CardFooter>
               <Link to="/courses" className="w-full">
                 <Button variant="outline" className="w-full">
-                  Browse All Courses
+                  Xem tất cả khóa học
                 </Button>
               </Link>
             </CardFooter>
@@ -133,7 +132,7 @@ const Dashboard = () => {
 
           <Card>
             <CardHeader className="pb-2">
-              <h3 className="text-lg font-medium">Learning Stats</h3>
+              <h3 className="text-lg font-medium">Thống kê học tập</h3>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
@@ -163,7 +162,7 @@ const Dashboard = () => {
           </Card>
         </div>
 
-        <h2 className="text-2xl font-bold mb-6">Your Courses</h2>
+        <h2 className="text-2xl font-bold mb-6">Khóa học của bạn</h2>
 
         {enrollmentsLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

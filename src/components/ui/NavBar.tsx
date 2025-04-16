@@ -78,57 +78,25 @@ export default function NavBar() {
             {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="relative h-10 w-10 rounded-full">
-                    <Avatar>
-                      <AvatarImage src={user?.full_name ? "" : ""} alt={user?.full_name} />
+                  <Button variant="ghost" className="h-8 w-8 p-0 rounded-full">
+                    <Avatar className="h-8 w-8">
+                      <AvatarImage src="" alt={user.full_name} />
                       <AvatarFallback>
-                        {user?.full_name ? getInitials(user.full_name) : "U"}
+                        {getInitials(user.full_name)}
                       </AvatarFallback>
                     </Avatar>
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56">
-                  <div className="flex items-center justify-start gap-2 p-2">
-                    <div className="flex flex-col space-y-1 leading-none">
-                      <p className="font-medium">{user.full_name}</p>
-                      <p className="w-[200px] truncate text-sm text-gray-500">
-                        {user.email}
-                      </p>
-                    </div>
-                  </div>
+                <DropdownMenuContent className="w-56" align="end" forceMount>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem asChild>
-                    <Link to="/profile" className="cursor-pointer">
-                      <User className="mr-2 h-4 w-4" />
-                      <span>Hồ sơ</span>
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <Link to="/dashboard" className="cursor-pointer">
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      <span>Khóa học của tôi</span>
-                    </Link>
-                  </DropdownMenuItem>
-                  {user.role === 'admin' && (
-                    <DropdownMenuItem asChild>
-                      <Link to="/admin" className="cursor-pointer">
-                        <LayoutDashboard className="mr-2 h-4 w-4" />
-                        <span>Quản trị</span>
-                      </Link>
-                    </DropdownMenuItem>
-                  )}
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem
-                    onClick={handleLogout}
-                    className="cursor-pointer text-red-600 focus:text-red-500"
-                  >
-                    <LogOut className="mr-2 h-4 w-4" />
-                    <span>Đăng xuất</span>
+                  <DropdownMenuItem onClick={handleLogout}>
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Đăng xuất
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
-              <div className="flex items-center space-x-2">
+              <div className="flex space-x-4">
                 <Link to="/login">
                   <Button variant="outline">Đăng nhập</Button>
                 </Link>
@@ -153,6 +121,7 @@ export default function NavBar() {
         </div>
       </div>
 
+      {/* Menu di động */}
       <div className={`${isOpen ? "block" : "hidden"} sm:hidden`}>
         <div className="pt-2 pb-3 space-y-1">
           <Link
@@ -188,59 +157,47 @@ export default function NavBar() {
         </div>
         {user ? (
           <div className="pt-4 pb-3 border-t border-gray-200">
-            <div className="flex items-center px-4">
-              <div className="flex-shrink-0">
-                <Avatar>
-                  <AvatarFallback>
-                    {user?.full_name ? getInitials(user.full_name) : "U"}
-                  </AvatarFallback>
-                </Avatar>
-              </div>
-              <div className="ml-3">
-                <div className="text-base font-medium text-gray-800">
-                  {user.full_name}
-                </div>
-                <div className="text-sm font-medium text-gray-500">
-                  {user.email}
-                </div>
+            <div className="px-4 flex items-center space-x-3">
+              <Avatar className="h-10 w-10">
+                <AvatarImage src="" alt={user.full_name} />
+                <AvatarFallback>
+                  {getInitials(user.full_name)}
+                </AvatarFallback>
+              </Avatar>
+              <div>
+                <div className="font-medium text-base text-gray-800">{user.full_name}</div>
+                <div className="text-sm text-gray-500">{user.email}</div>
               </div>
             </div>
             <div className="mt-3 space-y-1">
               <Link
                 to="/profile"
-                className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+                className="block px-4 py-2 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-800"
                 onClick={() => setIsOpen(false)}
               >
-                Your Profile
-              </Link>
-              <Link
-                to="/dashboard"
-                className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
-                onClick={() => setIsOpen(false)}
-              >
-                My Courses
+                Hồ sơ
               </Link>
               <button
                 onClick={handleLogout}
-                className="block w-full text-left px-4 py-2 text-base font-medium text-red-600 hover:text-red-800 hover:bg-gray-100"
+                className="block w-full text-left px-4 py-2 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-800"
               >
-                Sign out
+                Đăng xuất
               </button>
             </div>
           </div>
         ) : (
           <div className="pt-4 pb-3 border-t border-gray-200">
-            <div className="flex items-center justify-around">
+            <div className="space-y-1">
               <Link
                 to="/login"
-                className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+                className="block px-4 py-2 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-800"
                 onClick={() => setIsOpen(false)}
               >
                 Đăng nhập
               </Link>
               <Link
                 to="/register"
-                className="block px-4 py-2 text-base font-medium text-indigo-600 hover:text-indigo-800 hover:bg-gray-100"
+                className="block px-4 py-2 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-800"
                 onClick={() => setIsOpen(false)}
               >
                 Đăng ký
