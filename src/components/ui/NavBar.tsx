@@ -10,7 +10,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { BookOpen, LogOut, Menu, User, X, LayoutDashboard } from "lucide-react";
+import { 
+  BookOpen, 
+  LogOut, 
+  Menu, 
+  X, 
+  LayoutDashboard, 
+  Settings 
+} from "lucide-react";
 
 export default function NavBar() {
   const { user, logout } = useAuth();
@@ -64,12 +71,20 @@ export default function NavBar() {
               >
                 Giới thiệu
               </Link>
-              {user && (
+              {user && user.role === 'user' && (
                 <Link
                   to="/dashboard"
                   className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
                 >
                   Bảng điều khiển
+                </Link>
+              )}
+              {user && user.role === 'admin' && (
+                <Link
+                  to="/admin"
+                  className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                >
+                  Quản lý
                 </Link>
               )}
             </div>
@@ -88,6 +103,12 @@ export default function NavBar() {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-56" align="end" forceMount>
+                  <DropdownMenuItem>
+                    <Link to="/profile" className="flex items-center">
+                      <Settings className="h-4 w-4 mr-2" />
+                      Hồ sơ
+                    </Link>
+                  </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={handleLogout}>
                     <LogOut className="h-4 w-4 mr-2" />
@@ -121,7 +142,6 @@ export default function NavBar() {
         </div>
       </div>
 
-      {/* Menu di động */}
       <div className={`${isOpen ? "block" : "hidden"} sm:hidden`}>
         <div className="pt-2 pb-3 space-y-1">
           <Link
@@ -145,13 +165,22 @@ export default function NavBar() {
           >
             Giới thiệu
           </Link>
-          {user && (
+          {user && user.role === 'user' && (
             <Link
               to="/dashboard"
               className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800"
               onClick={() => setIsOpen(false)}
             >
               Bảng điều khiển
+            </Link>
+          )}
+          {user && user.role === 'admin' && (
+            <Link
+              to="/admin"
+              className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800"
+              onClick={() => setIsOpen(false)}
+            >
+              Quản lý
             </Link>
           )}
         </div>
