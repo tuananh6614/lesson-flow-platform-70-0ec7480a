@@ -1,13 +1,7 @@
 import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { 
-  fetchCourseById, 
-  fetchChaptersByCourseId,
-  checkEnrollment,
-  enrollInCourse,
-  getCurrentUser
-} from "@/lib/mock-data";
+import { courseService, enrollmentService } from "@/services";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { 
@@ -38,22 +32,24 @@ const CourseDetail = () => {
   // Fetch course details
   const { data: course, isLoading: courseLoading } = useQuery({
     queryKey: ["course", courseId],
-    queryFn: () => fetchCourseById(Number(courseId)),
+    queryFn: () => courseService.getCourseById(Number(courseId)),
   });
 
   // Fetch course chapters
   const { data: chapters, isLoading: chaptersLoading } = useQuery({
     queryKey: ["chapters", courseId],
-    queryFn: () => fetchChaptersByCourseId(Number(courseId)),
+    queryFn: () => courseService.getChaptersByCourseId(Number(courseId)),
     enabled: !!courseId,
   });
 
   // Check if user is enrolled
-  const { data: isEnrolled, isLoading: enrollmentLoading } = useQuery({
-    queryKey: ["enrollment", user?.id, courseId],
-    queryFn: () => checkEnrollment(user?.id || 0, Number(courseId)),
+  const { data: enrollmentStatus, isLoading: enrollmentLoading } = useQuery({
+    queryKey: ["enrollment", courseId],
+    queryFn: () => enrollmentService.getEnrollmentStatus(Number(courseId)),
     enabled: !!user && !!courseId,
   });
+  
+  const isEnrolled = enrollmentStatus?.isEnrolled;
 
   const handleEnroll = async () => {
     if (!user) {
@@ -67,12 +63,13 @@ const CourseDetail = () => {
 
     setIsLoading(true);
     try {
-      await enrollInCourse(user.id, Number(courseId));
+      await enrollmentService.enrollInCourse(Number(courseId));
       toast({
         title: "Successfully enrolled!",
         description: `You are now enrolled in ${course?.title}`,
       });
-      window.location.reload(); // Refresh to update enrollment status
+      // Invalidate the enrollment query to refresh data
+      window.location.reload(); // Eventually replace with React Query's invalidateQueries
     } catch (error) {
       console.error("Enrollment error:", error);
       toast({

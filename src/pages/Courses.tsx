@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Search } from "lucide-react";
+import { courseService } from "@/services";
 
 const CoursesPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -20,7 +21,14 @@ const CoursesPage = () => {
 
   const { data: courses, isLoading } = useQuery({
     queryKey: ["courses"],
-    queryFn: () => [], // Replace with actual backend fetch function
+    queryFn: async () => {
+      try {
+        return await courseService.getAllCourses();
+      } catch (error) {
+        console.error("Error fetching courses:", error);
+        return [];
+      }
+    }
   });
 
   const filteredCourses = courses?.filter((course) => {

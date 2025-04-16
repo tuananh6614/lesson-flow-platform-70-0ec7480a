@@ -1,7 +1,7 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { User } from '@/types';
-import { getCurrentUser, loginUser, logoutUser, registerUser } from '@/lib/mock-data';
+import { authService } from '@/services';
 import { useToast } from '@/hooks/use-toast';
 
 interface AuthContextType {
@@ -22,7 +22,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const loadUser = async () => {
       try {
-        const currentUser = await getCurrentUser();
+        // Check if token exists
+        const token = localStorage.getItem('token');
+        if (!token) {
+          setUser(null);
+          setIsLoading(false);
+          return;
+        }
+        
+        const currentUser = await authService.getCurrentUser();
         setUser(currentUser);
       } catch (error) {
         console.error('Failed to load user:', error);
@@ -31,6 +39,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           description: 'Failed to load user profile',
           variant: 'destructive',
         });
+        // Clear token if authentication fails
+        localStorage.removeItem('token');
+        setUser(null);
       } finally {
         setIsLoading(false);
       }
@@ -42,17 +53,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const login = async (email: string, password: string) => {
     setIsLoading(true);
     try {
-      const user = await loginUser(email, password);
-      setUser(user);
+      const response = await authService.login({ email, password });
+      setUser(response.user);
       toast({
         title: 'Welcome back!',
-        description: `Logged in as ${user.full_name}`,
+        description: `Logged in as ${response.user.full_name}`,
       });
     } catch (error) {
       console.error('Login failed:', error);
       toast({
         title: 'Login failed',
-        description: error instanceof Error ? error.message : 'Unknown error occurred',
+        description: error instanceof Error ? error.message : 'Invalid email or password',
         variant: 'destructive',
       });
       throw error;
@@ -64,7 +75,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const logout = async () => {
     setIsLoading(true);
     try {
-      await logoutUser();
+      authService.logout();
       setUser(null);
       toast({
         title: 'Logged out',
@@ -85,17 +96,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const register = async (fullName: string, email: string, password: string) => {
     setIsLoading(true);
     try {
-      const newUser = await registerUser(fullName, email, password);
-      setUser(newUser);
+      const response = await authService.register({ 
+        full_name: fullName, 
+        email, 
+        password 
+      });
+      setUser(response.user);
       toast({
         title: 'Registration successful',
-        description: `Welcome, ${newUser.full_name}!`,
+        description: `Welcome, ${response.user.full_name}!`,
       });
     } catch (error) {
       console.error('Registration failed:', error);
       toast({
         title: 'Registration failed',
-        description: error instanceof Error ? error.message : 'Unknown error occurred',
+        description: error instanceof Error ? error.message : 'Registration failed',
         variant: 'destructive',
       });
       throw error;
