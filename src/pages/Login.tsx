@@ -41,7 +41,7 @@ const Login = () => {
     try {
       // Xử lý đăng nhập sẽ được cài đặt với backend thực tế
       await login(data.email, data.password);
-      navigate("/dashboard");
+      navigate("/profile");
     } catch (error) {
       console.error("Login error:", error);
       // Xử lý lỗi

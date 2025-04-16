@@ -55,6 +55,9 @@ const App = () => (
             <Route path="/about" element={<About />} />
             <Route path="/courses/:courseId" element={<CourseDetail />} />
             
+            {/* Redirect /dashboard to /profile for backward compatibility */}
+            <Route path="/dashboard" element={<Navigate to="/profile" replace />} />
+            
             <Route 
               path="/learn/:courseId/chapter/:chapterId/lesson/:lessonId" 
               element={
