@@ -31,7 +31,7 @@ const registerSchema = z.object({
 type RegisterFormValues = z.infer<typeof registerSchema>;
 
 const Register = () => {
-  const { register: registerUser } = useAuth();
+  const { register } = useAuth();
   const navigate = useNavigate();
 
   const form = useForm<RegisterFormValues>({
@@ -46,11 +46,7 @@ const Register = () => {
 
   const onSubmit = async (data: RegisterFormValues) => {
     try {
-      await registerUser({
-        fullName: data.fullName,
-        email: data.email,
-        password: data.password
-      });
+      await register(data.fullName, data.email, data.password);
       navigate("/dashboard");
     } catch (error) {
       console.error("Registration error:", error);

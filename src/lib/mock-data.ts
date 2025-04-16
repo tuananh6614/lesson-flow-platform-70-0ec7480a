@@ -1,4 +1,3 @@
-
 import { Course, Chapter, Lesson, Page, User, Enrollment, Exam, Question } from "@/types";
 
 // Mock Courses
@@ -16,7 +15,6 @@ export const pages: Page[] = [];
 // Mock User
 export const currentUser: User = {
   id: 1,
-  name: "John Doe", // Adding the required name property
   full_name: "John Doe",
   email: "john.doe@example.com",
   role: "user",

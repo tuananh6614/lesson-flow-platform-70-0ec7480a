@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Toast as ToastType } from '../../types';
-import { Toast } from '@/components/ui/custom-toast'; // Import from the renamed file
+import Toast from './Toast';
 
 interface ToastContainerProps {
   toasts: ToastType[];

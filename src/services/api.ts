@@ -122,7 +122,7 @@ export const chapterService = {
     const response = await api.post('/chapters', chapterData);
     return response.data;
   },
-  updateChapter: async (id: number, chapterData: any) => {
+  updateChapter: async (id: number, chapterData: any) =>
     const response = await api.put(`/chapters/${id}`, chapterData);
     return response.data;
   },
