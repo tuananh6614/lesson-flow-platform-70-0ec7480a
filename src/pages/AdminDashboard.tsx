@@ -11,11 +11,10 @@ import {
   Users,
   BookOpen,
   FileText,
-  LayoutDashboard,
   Settings,
 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
-import { userService } from "@/services";
+import { userService, courseService } from "@/services";
 
 export default function AdminDashboard() {
   const { data: users, isLoading: usersLoading } = useQuery({
@@ -42,7 +41,7 @@ export default function AdminDashboard() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
-                {usersLoading ? '...' : users?.length || 0}
+                {usersLoading ? '...' : users && Array.isArray(users) ? users.length : 0}
               </div>
             </CardContent>
           </Card>
@@ -56,7 +55,7 @@ export default function AdminDashboard() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
-                {coursesLoading ? '...' : courses?.length || 0}
+                {coursesLoading ? '...' : courses && Array.isArray(courses) ? courses.length : 0}
               </div>
             </CardContent>
           </Card>
@@ -95,4 +94,3 @@ export default function AdminDashboard() {
     </Layout>
   );
 }
-
