@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import {
@@ -22,6 +22,7 @@ import {
 export default function NavBar() {
   const { user, logout } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -29,6 +30,12 @@ export default function NavBar() {
 
   const handleLogout = async () => {
     await logout();
+  };
+
+  const handleNavigateToProfile = () => {
+    navigate('/profile');
+    // Close dropdown if open
+    setIsOpen(false);
   };
 
   const getInitials = (name: string) => {
@@ -95,11 +102,9 @@ export default function NavBar() {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-56" align="end" forceMount>
-                  <DropdownMenuItem>
-                    <Link to="/profile" className="flex items-center">
-                      <Settings className="h-4 w-4 mr-2" />
-                      Hồ sơ
-                    </Link>
+                  <DropdownMenuItem onClick={handleNavigateToProfile}>
+                    <Settings className="h-4 w-4 mr-2" />
+                    Hồ sơ
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={handleLogout}>
@@ -182,13 +187,15 @@ export default function NavBar() {
               </div>
             </div>
             <div className="mt-3 space-y-1">
-              <Link
-                to="/profile"
-                className="block px-4 py-2 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-800"
-                onClick={() => setIsOpen(false)}
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  navigate('/profile');
+                }}
+                className="block w-full text-left px-4 py-2 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-800"
               >
                 Hồ sơ
-              </Link>
+              </button>
               <button
                 onClick={handleLogout}
                 className="block w-full text-left px-4 py-2 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-800"
