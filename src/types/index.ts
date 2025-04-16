@@ -1,5 +1,6 @@
 
-export type User = {
+// User related types
+export interface User {
   id: number;
   full_name: string;
   email: string;
@@ -7,9 +8,16 @@ export type User = {
   status: 'active' | 'inactive' | 'banned';
   created_at: string;
   updated_at: string;
-};
+}
 
-export type Course = {
+export interface PasswordChange {
+  currentPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+}
+
+// Course related types
+export interface Course {
   id: number;
   title: string;
   description: string;
@@ -17,12 +25,10 @@ export type Course = {
   status: 'active' | 'inactive' | 'maintenance';
   created_at: string;
   updated_at: string;
-  chaptersCount?: number;
-  lessonsCount?: number;
-  enrollmentCount?: number;
-};
+  chapters?: Chapter[];
+}
 
-export type Chapter = {
+export interface Chapter {
   id: number;
   course_id: number;
   title: string;
@@ -30,19 +36,18 @@ export type Chapter = {
   created_at: string;
   updated_at: string;
   lessons?: Lesson[];
-};
+}
 
-export type Lesson = {
+export interface Lesson {
   id: number;
   chapter_id: number;
   title: string;
   lesson_order: number;
   created_at: string;
   updated_at: string;
-  pages?: Page[];
-};
+}
 
-export type Page = {
+export interface Page {
   id: number;
   lesson_id: number;
   page_number: number;
@@ -50,9 +55,10 @@ export type Page = {
   content: string;
   created_at: string;
   updated_at: string;
-};
+}
 
-export type Enrollment = {
+// Enrollment related types
+export interface Enrollment {
   id: number;
   course_id: number;
   user_id: number;
@@ -61,9 +67,10 @@ export type Enrollment = {
   enrolled_date: string;
   updated_at: string;
   course?: Course;
-};
+}
 
-export type Exam = {
+// Exam related types
+export interface Exam {
   id: number;
   course_id: number;
   chapter_id: number;
@@ -72,30 +79,44 @@ export type Exam = {
   total_questions: number;
   created_at: string;
   updated_at: string;
-  questions?: Question[];
-};
+}
 
-export type Question = {
+export interface Question {
   id: number;
   chapter_id: number;
   question_text: string;
-  option_a: string | null;
-  option_b: string | null;
-  option_c: string | null;
-  option_d: string | null;
-  correct_answer: string | null;
+  option_a?: string;
+  option_b?: string;
+  option_c?: string;
+  option_d?: string;
+  correct_answer: string;
   created_at: string;
   updated_at: string;
-};
+}
 
-export type UserExam = {
+export interface UserExam {
   id: number;
   exam_id: number;
   user_id: number;
   attempt_count: number;
-  score: number | null;
+  score?: number;
   completed_at: string;
   created_at: string;
   updated_at: string;
-  exam?: Exam;
-};
+}
+
+export interface Certificate {
+  id: number;
+  user_id: number;
+  course_id: number;
+  certificate_url: string;
+  issued_at: string;
+  course_title?: string;
+}
+
+// Toast notification type
+export interface Toast {
+  id: string;
+  message: string;
+  type: 'success' | 'error' | 'info' | 'warning';
+}
