@@ -1,7 +1,6 @@
+
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { fetchCourses } from "@/lib/mock-data";
-import { Course } from "@/types";
 import Layout from "@/components/Layout";
 import CourseCard from "@/components/CourseCard";
 import { Input } from "@/components/ui/input";
@@ -21,10 +20,10 @@ const CoursesPage = () => {
 
   const { data: courses, isLoading } = useQuery({
     queryKey: ["courses"],
-    queryFn: fetchCourses
+    queryFn: () => [], // Replace with actual backend fetch function
   });
 
-  const filteredCourses = courses?.filter((course: Course) => {
+  const filteredCourses = courses?.filter((course) => {
     const matchesSearch = course.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
                           course.description.toLowerCase().includes(searchTerm.toLowerCase());
     
