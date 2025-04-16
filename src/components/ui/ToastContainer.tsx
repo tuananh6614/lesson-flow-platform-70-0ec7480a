@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Toast as ToastType } from '../../types';
-import { Toast as ShadcnToast } from './toast';
+import { Toast } from '@/components/ui/toast';
 
 interface ToastContainerProps {
   toasts: ToastType[];
